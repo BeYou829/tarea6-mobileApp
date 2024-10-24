@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Age Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <!-- <ion-title size="large">Find Out Your Age!</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-item>
+      <ion-input [(ngModel)]="name" type="text" label="Name: " placeholder="Enter your name"></ion-input>
+    </ion-item>
+    <ion-button (click)="onSubmit()" >Click me </ion-button> 
+
+    <div *ngIf="ageResult">
+      <h3> {{ageResult.name}} tiene <strong>{{ageResult.age}} y es una persona {{ternure}}</strong></h3>
+    </div>
+    <div [ngClass]="{
+      'joven': ternure === 'joven',
+      'adulta': ternure === 'adulta',
+      'anciana': ternure === 'anciana'
+    }">
+    </div>
+  </div>
+</ion-content>

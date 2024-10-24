@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Country</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <!-- <ion-title size="large">Country</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-item>
+      <ion-input [(ngModel)]="countryName" type="text" label="Country Name: " placeholder="Enter a country"></ion-input>
+    </ion-item>
+    <ion-button (click)="onSubmit()">Click me </ion-button>
+    
+    
+    <br>
+    <div class="result-container">
+      <h3>{{errorMessage}}</h3>
+    
+      <!-- Usamos ion-card para mostrar la información de cada país -->
+      <ion-card *ngFor="let c of countryResult">
+    
+        <!-- Título de la tarjeta con el nombre del país -->
+        <ion-card-header>
+          <ion-card-title>{{ c.name }}</ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+    
+          <!-- Mostrar los dominios del país -->
+          <ion-list>
+            <ion-item *ngFor="let d of c.domains">
+              <ion-label>
+                <p>Dominio: {{ d }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+    
+          <!-- Mostrar las páginas web del país -->
+          <ion-list>
+            <ion-item *ngFor="let wp of c.web_pages">
+              <ion-label>
+                <p>Sitio Web: {{ wp }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+    
+        </ion-card-content>
+    
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

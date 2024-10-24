@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Word Press Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      
+      <h2>Latest 3 posts from CSS-Tricks</h2>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <h2>Latest 3 posts from CSS-Tricks</h2>
+    <div *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <ion-card *ngFor="let post of latestPosts">
+      <ion-card-header>
+        <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+        <a class="buttonClass" [href]="post.link" target="_blank">Read More</a>
+      </ion-card-header>
+      <ion-card-content>
+        <p [innerHTML]="post.excerpt.rendered"></p>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>
